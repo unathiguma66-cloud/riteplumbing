@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rite Plumbing NYC — Licensed & Insured Plumbers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f0f0ec;
+  --bg2:#e8e8e2;
+  --white:#ffffff;
+  --ink:#0d0d0d;
+  --blue:#0038ff;
+  --blue2:#1a4dff;
+  --muted:#888880;
+  --border:rgba(13,13,13,0.1);
+  --ff-display:'Syne',sans-serif;
+  --ff-body:'Inter',sans-serif;
+  --ff-mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff-body);background:var(--bg);color:var(--ink);overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:2rem 4rem;transition:all 0.3s}
+nav.scrolled{background:rgba(240,240,236,0.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:1.25rem 4rem}
+.logo{display:flex;align-items:center;gap:0.75rem;text-decoration:none}
+.logo-mark{width:36px;height:36px;background:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-mark span{font-family:var(--ff-display);font-size:1rem;font-weight:800;color:white}
+.logo-text{font-family:var(--ff-display);font-size:1rem;font-weight:700;color:var(--ink);letter-spacing:0.02em}
+.logo-text small{display:block;font-family:var(--ff-mono);font-size:0.55rem;font-weight:400;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase;line-height:1}
+.nav-center{display:flex;gap:2.5rem;list-style:none}
+.nav-center a{font-size:0.8rem;font-weight:500;letter-spacing:0.05em;text-decoration:none;color:var(--muted);transition:color 0.2s}
+.nav-center a:hover{color:var(--ink)}
+.nav-right{display:flex;align-items:center;gap:1rem}
+.nav-phone{font-family:var(--ff-mono);font-size:0.78rem;color:var(--ink);text-decoration:none;font-weight:500;transition:color 0.2s}
+.nav-phone:hover{color:var(--blue)}
+.nav-btn{background:var(--blue);color:white;font-family:var(--ff-mono);font-size:0.72rem;font-weight:500;letter-spacing:0.08em;padding:0.6rem 1.25rem;text-decoration:none;transition:background 0.2s}
+.nav-btn:hover{background:var(--blue2)}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-rows:1fr auto;padding:10rem 4rem 4rem;position:relative;overflow:hidden}
+.hero-grid-lines{position:absolute;inset:0;pointer-events:none;opacity:0.4}
+.hero-grid-lines::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:80px 80px}
+.hero-top{position:relative;z-index:1}
+.hero-tag{display:inline-flex;align-items:center;gap:0.75rem;background:white;border:1px solid var(--border);padding:0.5rem 1rem;margin-bottom:3rem}
+.hero-tag-dot{width:8px;height:8px;background:var(--blue);border-radius:50%;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+.hero-tag-text{font-family:var(--ff-mono);font-size:0.68rem;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase}
+.hero-title{font-family:var(--ff-display);font-size:clamp(5rem,10vw,12rem);font-weight:800;line-height:0.88;letter-spacing:-0.03em;color:var(--ink);margin-bottom:3rem}
+.hero-title .blue{color:var(--blue)}
+.hero-title .outline{-webkit-text-stroke:2px var(--ink);color:transparent}
+.hero-meta{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;align-items:end}
+.hero-desc{font-size:1rem;color:var(--muted);line-height:1.8;font-weight:300;max-width:340px}
+.hero-cta{display:flex;flex-direction:column;gap:0.75rem}
+.btn-blue{display:inline-flex;align-items:center;gap:0.75rem;background:var(--blue);color:white;font-family:var(--ff-mono);font-size:0.78rem;font-weight:500;letter-spacing:0.08em;padding:1rem 2rem;text-decoration:none;transition:all 0.2s}
+.btn-blue:hover{background:var(--blue2);transform:translateY(-2px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:0.75rem;color:var(--muted);font-family:var(--ff-mono);font-size:0.75rem;text-decoration:none;transition:color 0.2s}
+.btn-ghost:hover{color:var(--ink)}
+.hero-license{background:white;border:1px solid var(--border);padding:1.5rem 2rem}
+.hero-lic-label{font-family:var(--ff-mono);font-size:0.62rem;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.5rem}
+.hero-lic-num{font-family:var(--ff-display);font-size:1.8rem;font-weight:800;color:var(--ink)}
+.hero-lic-status{display:inline-flex;align-items:center;gap:0.4rem;font-family:var(--ff-mono);font-size:0.62rem;color:var(--blue);margin-top:0.5rem}
+.hero-lic-status::before{content:'';width:6px;height:6px;background:var(--blue);border-radius:50%}
+.hero-bottom{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;padding-top:4rem;border-top:1px solid var(--border);margin-top:4rem}
+.hero-stats{display:flex;gap:4rem}
+.h-stat-n{font-family:var(--ff-display);font-size:2rem;font-weight:800;color:var(--ink)}
+.h-stat-n span{color:var(--blue)}
+.h-stat-l{font-family:var(--ff-mono);font-size:0.6rem;color:var(--muted);letter-spacing:0.12em;text-transform:uppercase;margin-top:0.2rem}
+.hero-scroll-hint{font-family:var(--ff-mono);font-size:0.65rem;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase;display:flex;align-items:center;gap:0.75rem}
+.hero-scroll-hint::before{content:'';width:40px;height:1px;background:var(--muted)}
+
+/* FEATURES BAR */
+.features-bar{background:var(--blue);display:grid;grid-template-columns:repeat(4,1fr)}
+.feat-item{padding:2.5rem 3rem;border-right:1px solid rgba(255,255,255,0.15);display:flex;align-items:flex-start;gap:1rem}
+.feat-item:last-child{border-right:none}
+.feat-icon{width:36px;height:36px;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem}
+.feat-title{font-family:var(--ff-display);font-size:1rem;font-weight:700;color:white;margin-bottom:0.25rem}
+.feat-sub{font-size:0.78rem;color:rgba(255,255,255,0.55);font-weight:300;line-height:1.5}
+
+/* SECTIONS */
+section{padding:8rem 4rem}
+.s-label{font-family:var(--ff-mono);font-size:0.65rem;color:var(--blue);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:1.25rem;display:flex;align-items:center;gap:0.75rem}
+.s-label::before{content:'//';color:rgba(0,56,255,0.3);font-size:0.7rem}
+.s-title{font-family:var(--ff-display);font-size:clamp(2.5rem,4vw,4.5rem);font-weight:800;line-height:0.95;letter-spacing:-0.02em;color:var(--ink)}
+
+/* SERVICES */
+.services{background:var(--white);padding:8rem 4rem}
+.svc-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:5rem}
+.svc-head-right{max-width:320px}
+.svc-intro{font-size:0.95rem;color:var(--muted);line-height:1.8;font-weight:300;margin-bottom:1.5rem}
+.svc-list{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border)}
+.svc-item{background:white;padding:2.5rem 3rem;display:flex;align-items:flex-start;gap:2rem;transition:background 0.25s;cursor:default}
+.svc-item:hover{background:var(--bg)}
+.svc-item-num{font-family:var(--ff-mono);font-size:0.65rem;color:var(--blue);letter-spacing:0.1em;flex-shrink:0;padding-top:0.3rem}
+.svc-item-title{font-family:var(--ff-display);font-size:1.3rem;font-weight:700;color:var(--ink);margin-bottom:0.5rem;line-height:1.1}
+.svc-item-desc{font-size:0.85rem;color:var(--muted);line-height:1.7;font-weight:300}
+.svc-item-arrow{margin-left:auto;flex-shrink:0;width:28px;height:28px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:0.8rem;color:var(--muted);transition:all 0.2s;align-self:center}
+.svc-item:hover .svc-item-arrow{background:var(--blue);border-color:var(--blue);color:white}
+
+/* TECH */
+.tech{background:var(--bg);padding:8rem 4rem}
+.tech-inner{display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:center}
+.tech-right .s-title{margin-bottom:1.5rem}
+.tech-desc{font-size:0.95rem;color:var(--muted);line-height:1.9;font-weight:300;margin-bottom:3rem}
+.tech-features{display:flex;flex-direction:column;gap:0}
+.tf{display:grid;grid-template-columns:auto 1fr;gap:1.5rem;align-items:start;padding:1.5rem 0;border-top:1px solid var(--border)}
+.tf:last-child{border-bottom:1px solid var(--border)}
+.tf-num{font-family:var(--ff-mono);font-size:0.65rem;color:var(--blue);letter-spacing:0.1em;padding-top:0.2rem}
+.tf-title{font-size:0.9rem;font-weight:600;color:var(--ink);margin-bottom:0.3rem}
+.tf-desc{font-size:0.82rem;color:var(--muted);line-height:1.6;font-weight:300}
+.tech-left{display:flex;flex-direction:column;gap:2px}
+.tech-card{background:white;padding:2.5rem;border:1px solid var(--border)}
+.tech-card-label{font-family:var(--ff-mono);font-size:0.62rem;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1rem}
+.tech-card-val{font-family:var(--ff-display);font-size:2.5rem;font-weight:800;color:var(--ink);line-height:1}
+.tech-card-val span{color:var(--blue)}
+.tech-card-sub{font-size:0.82rem;color:var(--muted);font-weight:300;margin-top:0.5rem}
+.tech-card.blue{background:var(--blue);border-color:var(--blue)}
+.tech-card.blue .tech-card-label{color:rgba(255,255,255,0.45)}
+.tech-card.blue .tech-card-val{color:white}
+.tech-card.blue .tech-card-val span{color:rgba(255,255,255,0.6)}
+.tech-card.blue .tech-card-sub{color:rgba(255,255,255,0.5)}
+
+/* TESTIMONIALS */
+.testi{background:var(--ink);padding:8rem 4rem}
+.testi .s-label{color:rgba(0,56,255,0.7)}
+.testi .s-title{color:white;margin-bottom:4rem}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.06)}
+.tc{background:var(--ink);padding:2.5rem;transition:background 0.25s}
+.tc:hover{background:#181818}
+.tc-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.5rem}
+.tc-stars{font-family:var(--ff-mono);font-size:0.65rem;color:var(--blue);letter-spacing:0.1em}
+.tc-tag{font-family:var(--ff-mono);font-size:0.6rem;color:rgba(255,255,255,0.2);letter-spacing:0.1em;text-transform:uppercase;border:1px solid rgba(255,255,255,0.1);padding:0.25rem 0.6rem}
+.tc-text{font-size:0.9rem;color:rgba(255,255,255,0.45);line-height:1.9;font-weight:300;font-style:italic;margin-bottom:2rem}
+.tc-name{font-family:var(--ff-display);font-size:1rem;font-weight:700;color:white}
+.tc-loc{font-family:var(--ff-mono);font-size:0.62rem;color:rgba(255,255,255,0.2);margin-top:0.2rem}
+
+/* CTA */
+.cta{background:var(--blue);padding:8rem 4rem;position:relative;overflow:hidden}
+.cta::before{content:'RITE';position:absolute;right:-2rem;top:50%;transform:translateY(-50%);font-family:var(--ff-display);font-size:20rem;font-weight:800;color:rgba(255,255,255,0.05);pointer-events:none;line-height:1;letter-spacing:-0.05em}
+.cta-inner{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;position:relative;z-index:1}
+.cta .s-label{color:rgba(255,255,255,0.4)}
+.cta-title{font-family:var(--ff-display);font-size:clamp(3.5rem,6vw,7rem);font-weight:800;color:white;line-height:0.92;letter-spacing:-0.02em}
+.cta-sub{font-size:0.95rem;color:rgba(255,255,255,0.55);line-height:1.8;font-weight:300;margin-top:1.5rem}
+.cta-right{display:flex;flex-direction:column;gap:1rem}
+.btn-white{display:inline-flex;align-items:center;gap:0.75rem;background:white;color:var(--blue);font-family:var(--ff-mono);font-size:0.78rem;font-weight:600;letter-spacing:0.08em;padding:1.2rem 2.5rem;text-decoration:none;transition:all 0.2s}
+.btn-white:hover{background:var(--ink);color:white;transform:translateX(4px)}
+.btn-woutline{display:inline-flex;align-items:center;gap:0.75rem;color:rgba(255,255,255,0.6);font-family:var(--ff-mono);font-size:0.75rem;font-weight:400;letter-spacing:0.08em;padding:1.2rem 2.5rem;text-decoration:none;border:1px solid rgba(255,255,255,0.25);transition:all 0.2s}
+.btn-woutline:hover{border-color:white;color:white;transform:translateX(4px)}
+.cta-note{font-family:var(--ff-mono);font-size:0.65rem;color:rgba(255,255,255,0.3);margin-top:0.5rem;letter-spacing:0.1em}
+
+/* FOOTER */
+footer{background:#080808;padding:5rem 4rem 3rem}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;padding-bottom:4rem;border-bottom:1px solid rgba(255,255,255,0.06)}
+.footer-logo{display:flex;align-items:center;gap:0.75rem;margin-bottom:1.25rem}
+.footer-logo-mark{width:32px;height:32px;background:var(--blue);display:flex;align-items:center;justify-content:center}
+.footer-logo-mark span{font-family:var(--ff-display);font-size:0.9rem;font-weight:800;color:white}
+.footer-logo-text{font-family:var(--ff-display);font-size:1rem;font-weight:700;color:white}
+.footer-about{font-size:0.82rem;color:rgba(255,255,255,0.28);line-height:1.9;font-weight:300;max-width:280px}
+.footer-h{font-family:var(--ff-mono);font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:1.5rem}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:0.6rem}
+.footer-links a{font-size:0.82rem;color:rgba(255,255,255,0.25);text-decoration:none;transition:color 0.2s;font-weight:300}
+.footer-links a:hover{color:var(--blue)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:2rem}
+.footer-copy{font-family:var(--ff-mono);font-size:0.65rem;color:rgba(255,255,255,0.2)}
+.footer-lic{font-family:var(--ff-mono);font-size:0.65rem;color:rgba(255,255,255,0.2)}
+.footer-lic span{color:var(--blue)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.d1{transition-delay:0.1s}.d2{transition-delay:0.2s}.d3{transition-delay:0.3s}
+
+@media(max-width:900px){
+  nav{padding:1.25rem 1.5rem}
+  nav.scrolled{padding:1rem 1.5rem}
+  .nav-center{display:none}
+  .hero{padding:8rem 1.5rem 3rem}
+  .hero-meta{grid-template-columns:1fr;gap:2rem}
+  .hero-bottom{flex-direction:column;gap:2rem;align-items:flex-start}
+  .hero-stats{gap:2rem;flex-wrap:wrap}
+  .features-bar{grid-template-columns:1fr 1fr}
+  .feat-item{border-bottom:1px solid rgba(255,255,255,0.15)}
+  section,.services,.tech,.testi,.cta{padding:5rem 1.5rem}
+  .svc-head{flex-direction:column;gap:2rem}
+  .svc-list{grid-template-columns:1fr}
+  .tech-inner{grid-template-columns:1fr;gap:3rem}
+  .testi-grid{grid-template-columns:1fr}
+  .cta-inner{grid-template-columns:1fr;gap:3rem}
+  .footer-top{grid-template-columns:1fr 1fr;gap:2.5rem}
+  footer{padding:3rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="logo">
+    <div class="logo-mark"><span>R</span></div>
+    <div class="logo-text">
+      Rite Plumbing
+      <small>NYC · License #1608</small>
+    </div>
+  </a>
+  <ul class="nav-center">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#tech">Why Us</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="tel:3475026441" class="nav-phone">347-502-6441</a>
+    <a href="https://www.housecallpro.com/book/Rite-Plumbing--Heating-Inc/fe74abec57da43a0a171551f5812231d" class="nav-btn">Book Online →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-lines"></div>
+  <div class="hero-top">
+    <div class="hero-tag">
+      <div class="hero-tag-dot"></div>
+      <span class="hero-tag-text">Available Now — 24/7 Emergency Service</span>
+    </div>
+    <h1 class="hero-title">
+      <span class="blue">Rite</span><br>
+      Plumbing<br>
+      <span class="outline">NYC.</span>
+    </h1>
+    <div class="hero-meta">
+      <p class="hero-desc">Licensed, insured, and tech-forward plumbers serving Manhattan and all NYC boroughs. Book online in 30 seconds.</p>
+      <div class="hero-cta">
+        <a href="tel:3475026441" class="btn-blue">☎ Call 347-502-6441</a>
+        <a href="https://www.housecallpro.com/book/Rite-Plumbing--Heating-Inc/fe74abec57da43a0a171551f5812231d" class="btn-ghost">Book Online Instead →</a>
+      </div>
+      <div class="hero-license">
+        <div class="hero-lic-label">NYC Plumbing License</div>
+        <div class="hero-lic-num">#1608</div>
+        <div class="hero-lic-status">Verified & Active</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-bottom">
+    <div class="hero-stats">
+      <div>
+        <div class="h-stat-n">24<span>/7</span></div>
+        <div class="h-stat-l">Always On</div>
+      </div>
+      <div>
+        <div class="h-stat-n">&lt;30<span>m</span></div>
+        <div class="h-stat-l">Response Time</div>
+      </div>
+      <div>
+        <div class="h-stat-n">5<span>★</span></div>
+        <div class="h-stat-l">Rated Google</div>
+      </div>
+      <div>
+        <div class="h-stat-n">NYC<span>.</span></div>
+        <div class="h-stat-l">All Boroughs</div>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">Scroll to explore</div>
+  </div>
+</section>
+
+<!-- FEATURES BAR -->
+<div class="features-bar">
+  <div class="feat-item">
+    <div class="feat-icon">📍</div>
+    <div>
+      <div class="feat-title">GPS Tracking</div>
+      <div class="feat-sub">Track your plumber in real time while en route</div>
+    </div>
+  </div>
+  <div class="feat-item">
+    <div class="feat-icon">🗓</div>
+    <div>
+      <div class="feat-title">Book in 30 Seconds</div>
+      <div class="feat-sub">Online scheduling — no phone call needed</div>
+    </div>
+  </div>
+  <div class="feat-item">
+    <div class="feat-icon">💳</div>
+    <div>
+      <div class="feat-title">Easy Online Payment</div>
+      <div class="feat-sub">Card, check, or ACH via secure invoice link</div>
+    </div>
+  </div>
+  <div class="feat-item">
+    <div class="feat-icon">📄</div>
+    <div>
+      <div class="feat-title">Docs in 24 Hours</div>
+      <div class="feat-sub">COI, scope of work, indemnification — fast</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="svc-head reveal">
+    <div>
+      <div class="s-label">What we fix</div>
+      <h2 class="s-title">Every Plumbing<br>Problem. Solved.</h2>
+    </div>
+    <div class="svc-head-right">
+      <p class="svc-intro">Residential, commercial, and emergency plumbing across all five NYC boroughs. Every job backed by our license and full insurance.</p>
+      <a href="tel:3475026441" class="btn-blue" style="display:inline-flex;margin-top:0">Get a Free Quote →</a>
+    </div>
+  </div>
+  <div class="svc-list">
+    <div class="svc-item reveal">
+      <div class="svc-item-num">01</div>
+      <div>
+        <div class="svc-item-title">Emergency Plumbing</div>
+        <p class="svc-item-desc">Burst pipes, floods, no hot water — we're there within 30 minutes, any time of day or night.</p>
+      </div>
+      <div class="svc-item-arrow">→</div>
+    </div>
+    <div class="svc-item reveal d1">
+      <div class="svc-item-num">02</div>
+      <div>
+        <div class="svc-item-title">Drain Cleaning & Repair</div>
+        <p class="svc-item-desc">Clogged sinks, backed-up sewers, slow drains — cleared fast with professional-grade equipment.</p>
+      </div>
+      <div class="svc-item-arrow">→</div>
+    </div>
+    <div class="svc-item reveal">
+      <div class="svc-item-num">03</div>
+      <div>
+        <div class="svc-item-title">Water Heater Services</div>
+        <p class="svc-item-desc">Traditional and tankless water heater installation, repair, and replacement — same day available.</p>
+      </div>
+      <div class="svc-item-arrow">→</div>
+    </div>
+    <div class="svc-item reveal d1">
+      <div class="svc-item-num">04</div>
+      <div>
+        <div class="svc-item-title">Gas Leak Repair</div>
+        <p class="svc-item-desc">Gas leaks are emergencies. Certified specialists respond immediately — don't wait, call now.</p>
+      </div>
+      <div class="svc-item-arrow">→</div>
+    </div>
+    <div class="svc-item reveal">
+      <div class="svc-item-num">05</div>
+      <div>
+        <div class="svc-item-title">Bathroom & Kitchen Plumbing</div>
+        <p class="svc-item-desc">Faucets, sinks, toilets, showers, garbage disposals — full fixture installation and repair.</p>
+      </div>
+      <div class="svc-item-arrow">→</div>
+    </div>
+    <div class="svc-item reveal d1">
+      <div class="svc-item-num">06</div>
+      <div>
+        <div class="svc-item-title">Commercial Plumbing</div>
+        <p class="svc-item-desc">Offices, restaurants, retail — we handle commercial jobs with speed and minimal disruption.</p>
+      </div>
+      <div class="svc-item-arrow">→</div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH / WHY US -->
+<section class="tech" id="tech">
+  <div class="tech-inner">
+    <div class="tech-left reveal">
+      <div class="tech-card">
+        <div class="tech-card-label">License Number</div>
+        <div class="tech-card-val">#<span>1608</span></div>
+        <div class="tech-card-sub">NYC Dept. of Buildings — Verified</div>
+      </div>
+      <div class="tech-card" style="margin-top:2px">
+        <div class="tech-card-label">Response Time</div>
+        <div class="tech-card-val">&lt;<span>30</span>min</div>
+        <div class="tech-card-sub">Manhattan & all boroughs</div>
+      </div>
+      <div class="tech-card blue" style="margin-top:2px">
+        <div class="tech-card-label">Availability</div>
+        <div class="tech-card-val">24<span>/7</span></div>
+        <div class="tech-card-sub">365 days a year, no exceptions</div>
+      </div>
+    </div>
+    <div class="tech-right">
+      <div class="s-label reveal">Why Rite Plumbing</div>
+      <h2 class="s-title reveal">Built for<br>Modern NYC.</h2>
+      <p class="tech-desc reveal">We're not your average plumber. Rite Plumbing combines decades of trade expertise with modern tools — so you get fast service, full transparency, and zero hassle.</p>
+      <div class="tech-features">
+        <div class="tf reveal">
+          <div class="tf-num">01</div>
+          <div>
+            <div class="tf-title">Track your plumber live</div>
+            <div class="tf-desc">GPS tracking so you know exactly when to expect us. No more waiting around guessing.</div>
+          </div>
+        </div>
+        <div class="tf reveal d1">
+          <div class="tf-num">02</div>
+          <div>
+            <div class="tf-title">Building management ready</div>
+            <div class="tf-desc">COI, scope of work, and indemnification letters delivered within 24 hours for any NYC building.</div>
+          </div>
+        </div>
+        <div class="tf reveal d2">
+          <div class="tf-num">03</div>
+          <div>
+            <div class="tf-title">Fully licensed & insured</div>
+            <div class="tf-desc">License #1608. Every job covered by full liability insurance. Zero risk to you.</div>
+          </div>
+        </div>
+        <div class="tf reveal d3">
+          <div class="tf-num">04</div>
+          <div>
+            <div class="tf-title">Transparent flat-rate pricing</div>
+            <div class="tf-desc">We quote before we work. You approve before we touch anything. No surprises.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi" id="testimonials">
+  <div class="s-label">Client reviews</div>
+  <h2 class="s-title reveal">Trusted Across NYC.</h2>
+  <div class="testi-grid" style="margin-top:0">
+    <div class="tc reveal">
+      <div class="tc-top">
+        <div class="tc-stars">★★★★★</div>
+        <div class="tc-tag">Manhattan</div>
+      </div>
+      <p class="tc-text">"Fast, clean, and professional. They fixed our burst pipe the same night we called. Showed up with all the right parts and had it sorted in under two hours."</p>
+      <div class="tc-name">David M.</div>
+      <div class="tc-loc">Upper East Side, Manhattan</div>
+    </div>
+    <div class="tc reveal d1">
+      <div class="tc-top">
+        <div class="tc-stars">★★★★★</div>
+        <div class="tc-tag">Brooklyn</div>
+      </div>
+      <p class="tc-text">"I loved being able to track the plumber on the way. Felt very professional and modern. The work itself was excellent — fixed a leak that two other companies missed."</p>
+      <div class="tc-name">Priya S.</div>
+      <div class="tc-loc">Park Slope, Brooklyn</div>
+    </div>
+    <div class="tc reveal d2">
+      <div class="tc-top">
+        <div class="tc-stars">★★★★★</div>
+        <div class="tc-tag">Queens</div>
+      </div>
+      <p class="tc-text">"They handled all the building management documents within a day. As a property manager, that's exactly what I need. Will be using them for all future work."</p>
+      <div class="tc-name">Marcus T.</div>
+      <div class="tc-loc">Astoria, Queens</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="cta-inner">
+    <div>
+      <div class="s-label">Get in touch</div>
+      <h2 class="cta-title reveal">Need a<br>Plumber<br>Now?</h2>
+      <p class="cta-sub">Call or book online — we're available 24/7 across all five NYC boroughs. Licensed, insured, and there fast.</p>
+    </div>
+    <div class="cta-right reveal d1">
+      <a href="tel:3475026441" class="btn-white">☎ Call 347-502-6441</a>
+      <a href="https://www.housecallpro.com/book/Rite-Plumbing--Heating-Inc/fe74abec57da43a0a171551f5812231d" class="btn-woutline">🗓 Book Online</a>
+      <a href="mailto:info@riteplumbingnyc.com" class="btn-woutline">✉ Email Us</a>
+      <div class="cta-note">750 Lexington Ave, 9th Floor, New York NY 10022</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">
+        <div class="footer-logo-mark"><span>R</span></div>
+        <div class="footer-logo-text">Rite Plumbing NYC</div>
+      </div>
+      <p class="footer-about">Licensed and insured plumbers serving all five NYC boroughs. Residential, commercial, and emergency plumbing — available 24/7.</p>
+    </div>
+    <div>
+      <div class="footer-h">Services</div>
+      <ul class="footer-links">
+        <li><a href="#">Emergency Plumbing</a></li>
+        <li><a href="#">Drain Cleaning</a></li>
+        <li><a href="#">Water Heaters</a></li>
+        <li><a href="#">Gas Lines</a></li>
+        <li><a href="#">Bathrooms & Kitchens</a></li>
+        <li><a href="#">Commercial</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-h">Boroughs</div>
+      <ul class="footer-links">
+        <li><a href="#">Manhattan</a></li>
+        <li><a href="#">Brooklyn</a></li>
+        <li><a href="#">Queens</a></li>
+        <li><a href="#">The Bronx</a></li>
+        <li><a href="#">Staten Island</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-h">Contact</div>
+      <ul class="footer-links">
+        <li><a href="tel:3475026441">347-502-6441</a></li>
+        <li><a href="mailto:info@riteplumbingnyc.com">info@riteplumbingnyc.com</a></li>
+        <li><a href="#">Book Online</a></li>
+        <li><a href="#">750 Lexington Ave, NY</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Rite Plumbing & Heating Inc — All rights reserved</span>
+    <span class="footer-lic">NYC License <span>#1608</span> · Fully Insured</span>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60));
+const obs=new IntersectionObserver(e=>e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')}),{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
